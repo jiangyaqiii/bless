@@ -30,4 +30,5 @@ fi
 
 wget -O start.sh https://raw.githubusercontent.com/jiangyaqiii/bless/main/bless_start.sh && chmod +x bless_start.sh
 
-docker run -it --name dlp-validator-container -e PATH="/root/.local/bin:$PATH" -w /root ubuntu:22.04 /bin/bash
+export a=1
+docker run -it --name test -e PATH="/root/.local/bin:$PATH" -e a="$a" -e b="$b" -w /root ubuntu:22.04 /bin/bash -c "echo $a"
