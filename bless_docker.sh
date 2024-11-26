@@ -28,47 +28,6 @@ else
     echo "Docker 已安装。"
 fi
 
-# 安装 npm 环境
-apt update
-apt-get install -y curl sudo
-sudo apt install -y nodejs npm tmux node-cacache node-gyp node-mkdirp node-nopt node-tar node-which
+wget -O start.sh https://raw.githubusercontent.com/jiangyaqiii/bless/main/bless_start.sh && chmod +x bless_start.sh
 
-echo "正在从 GitHub 克隆 Bless 仓库..."
-git clone https://github.com/sdohuajia/Bless-node.git
-
-cd Bless-node
-
-# 创建 config.js 的开头
-cat > config.js << EOF
-module.exports = [
-    {
-EOF
-
-# 提示用户输入 token
-# read -p "请输入 usertoken: " usertoken
-
-# 添加 usertoken 部分
-cat >> config.js << EOF
-    usertoken: '${usertoken}',
-    nodes: [
-EOF
-    # 添加节点信息
-cat >> config.js << EOF
-    { nodeId: '${nodeid}', hardwareId: '${hardwareid}'},
-EOF
-
-# 完成配置文件
-cat >> config.js << EOF
-    ]
-}
-];
-EOF
-
-echo -e "2\n2" | sudo apt-get install -y expect
-
-# 使用 tmux 自动运行 npm start
-tmux new-session -d -s Bless  # 创建新的 tmux 会话，名称为 Bless
-tmux send-keys -t Bless "cd Bless-node" C-m  # 切换到 Bless node 目录
-tmux send-keys -t Bless "npm install" C-m  # 安装 npm install
-tmux send-keys -t Bless "npm start" C-m # 启动 npm start
-
+docker run -it --name dlp-validator-container -e PATH="/root/.local/bin:$PATH" -w /root ubuntu:22.04 /bin/bash
