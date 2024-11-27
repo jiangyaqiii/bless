@@ -4,7 +4,7 @@
 apt update
 apt-get install -y curl sudo
 echo -e "2\n2" | sudo apt-get install -y expect
-sudo apt install -y nodejs npm tmux node-cacache node-gyp node-mkdirp node-nopt node-tar node-which
+sudo apt install -y git nodejs npm tmux node-cacache node-gyp node-mkdirp node-nopt node-tar node-which
 
 echo "正在从 GitHub 克隆 Bless 仓库..."
 git clone https://github.com/sdohuajia/Bless-node.git
