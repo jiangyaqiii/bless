@@ -15,6 +15,10 @@ cd Bless-node
 one_gene=$(echo -e "1\n1" |node gen.js)
 nodeid=$(echo "$one_gene" | awk -F ':' '/publicKey/ {print $2}' | sed 's/,$//' | tr -d '"' | tr -d "'" | sed 's/^ *//')
 hardwareId=$(echo "$one_gene" | awk -F ':' '/hardwareID/ {print $2}' | sed 's/,$//' | tr -d '"' | tr -d "'" | sed 's/^ *//')
+echo "传入的usertoken：" $
+echo "生成新的nodeid:" $nodeis
+echo ""
+echo "生成新的hardwareId:" $hardwareId
 
 # 创建 config.js 的开头
 cat > config.js << EOF
