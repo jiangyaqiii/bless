@@ -47,12 +47,12 @@ cat >> config.js << EOF
 ];
 EOF
 
-# 编写跳过选项脚本
-echo '#!/usr/bin/expect
-spawn npm start
-expect "y/n"
-send "n\r"
-interact'>run_npm.expect
+# # 编写跳过选项脚本
+# echo '#!/usr/bin/expect
+# spawn npm start
+# expect "y/n"
+# send "n\r"
+# interact'>run_npm.expect
 
 # # 编写跳过选项脚本
 # echo '#!/usr/bin/expect
@@ -62,10 +62,11 @@ interact'>run_npm.expect
 # send "n\r"
 # interact'>run_npm.expect
 
-chmod +x run_npm.expect
+# chmod +x run_npm.expect
 
 npm install
-./run_npm.expect 2>&1 | tee tmp.txt
+echo -e "n" |npm start
+# ./run_npm.expect 2>&1 | tee tmp.txt
 
 # 使用 tmux 自动运行 npm start
 # tmux new-session -d -s Bless  # 创建新的 tmux 会话，名称为 Bless
