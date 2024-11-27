@@ -51,7 +51,7 @@ EOF
 echo '#!/usr/bin/expect
 spawn npm start
 expect "y/n"
-send "y\r"
+send "n\r"
 interact'>run_npm.expect
 
 chmod +x run_npm.expect
