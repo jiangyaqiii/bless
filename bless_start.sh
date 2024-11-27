@@ -59,7 +59,7 @@ echo ''>tmp.txt
 # 编写跳过选项脚本
 echo '#!/usr/bin/expect
 # 启动npm start，并通过>&4将其输出重定向到已经关联好的文件描述符4
-spawn bash -c "npm start 2>&1 | tee tmp.txt"
+spawn bash -c "nohup npm start 2>&1 | tee tmp.txt"
 expect "y/n"
 send "n\r"
 interact'>run_npm.expect
@@ -67,7 +67,7 @@ interact'>run_npm.expect
 chmod +x run_npm.expect
 
 npm install
-# ./run_npm.expect
+./run_npm.expect
 
 # 使用 tmux 自动运行 npm start
 # tmux new-session -d -s Bless  # 创建新的 tmux 会话，名称为 Bless
