@@ -13,11 +13,11 @@ cd Bless-node
 
 ##生成
 one_gene=$(echo -e "1\n1" |node gen.js)
-nodeid=$(echo "$one_gene" | awk -F ':' '/publicKey/ {print $2}' | sed 's/,$//' | tr -d '"' | tr -d "'" | sed 's/^ *//')
+nodeId=$(echo "$one_gene" | awk -F ':' '/publicKey/ {print $2}' | sed 's/,$//' | tr -d '"' | tr -d "'" | sed 's/^ *//')
 hardwareId=$(echo "$one_gene" | awk -F ':' '/hardwareID/ {print $2}' | sed 's/,$//' | tr -d '"' | tr -d "'" | sed 's/^ *//')
 echo "传入的usertoken：" $usertoken
 echo ""
-echo "生成新的nodeId:" $nodeid
+echo "生成新的nodeId:" $nodeId
 echo ""
 echo "生成新的hardwareId:" $hardwareId
 
@@ -37,7 +37,7 @@ cat >> config.js << EOF
 EOF
     # 添加节点信息
 cat >> config.js << EOF
-    { nodeId: '${nodeid}', hardwareId: '${hardwareid}'},
+    { nodeId: '${nodeId}', hardwareId: '${hardwareId}'},
 EOF
 
 # 完成配置文件
