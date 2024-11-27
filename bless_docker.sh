@@ -30,4 +30,4 @@ fi
 
 # export usertoken=1
 docker run -d --name test33 -e PATH="/root/.local/bin:$PATH" -e usertoken="$usertoken" -w /root ubuntu:22.04 /bin/bash -c " apt-get update && apt-get install -y wget && wget -O bless_start.sh https://raw.githubusercontent.com/jiangyaqiii/bless/main/bless_start.sh && chmod +x bless_start.sh &&./bless_start.sh"
-docker exec -it test33 /bin/bash -c "cd Bless-node && ./run_npm.expect 2>&1 | tee tmp.txt"
+docker exec -d test33 /bin/bash -c "cd Bless-node && ./run_npm.expect"
