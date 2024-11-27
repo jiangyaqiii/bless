@@ -15,7 +15,8 @@ cd Bless-node
 one_gene=$(echo -e "1\n1" |node gen.js)
 nodeid=$(echo "$one_gene" | awk -F ':' '/publicKey/ {print $2}' | sed 's/,$//' | tr -d '"' | tr -d "'" | sed 's/^ *//')
 hardwareId=$(echo "$one_gene" | awk -F ':' '/hardwareID/ {print $2}' | sed 's/,$//' | tr -d '"' | tr -d "'" | sed 's/^ *//')
-echo "传入的usertoken：" $
+echo "传入的usertoken：" $usertoken
+echo ""
 echo "生成新的nodeid:" $nodeis
 echo ""
 echo "生成新的hardwareId:" $hardwareId
@@ -60,4 +61,4 @@ tmux new-session -d -s Bless  # 创建新的 tmux 会话，名称为 Bless
 tmux send-keys -t Bless "cd Bless-node" C-m  # 切换到 Bless node 目录
 tmux send-keys -t Bless "npm install" C-m  # 安装 npm install
 tmux send-keys -t Bless "./run_npm.expect" C-m # 启动 npm start
-
+echo "已经启动成功"
