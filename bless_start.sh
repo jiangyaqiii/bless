@@ -54,12 +54,14 @@ EOF
 # send "n\r"
 # interact'>run_npm.expect
 
+echo ''>tmp.txt
+
 # 编写跳过选项脚本
 echo '#!/usr/bin/expect
-# 先执行spawn命令启动npm start，并将其输出重定向到文件描述符3
-spawn bash -c "npm start >&3"
-# 这里不直接执行exec 3>tmp.txt，而是将其包裹在一个eval语句中，让它在正确的时机执行
-eval exec 3>tmp.txt
+# 先创建一个临时文件描述符4，并将其关联到tmp.txt文件
+exec 4>tmp.txt
+# 启动npm start，并通过>&4将其输出重定向到已经关联好的文件描述符4
+spawn bash -c "npm start >&4"
 expect "y/n"
 send "n\r"
 interact'>run_npm.expect
