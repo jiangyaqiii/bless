@@ -57,7 +57,7 @@ interact'>run_npm.expect
 chmod +x run_npm.expect
 
 npm install
-./run_npm.expect 2>&1 | tee tmp.txt
+./run_npm.expect
 
 # 使用 tmux 自动运行 npm start
 # tmux new-session -d -s Bless  # 创建新的 tmux 会话，名称为 Bless
