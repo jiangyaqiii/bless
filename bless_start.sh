@@ -47,9 +47,18 @@ cat >> config.js << EOF
 ];
 EOF
 
+# # 编写跳过选项脚本
+# echo '#!/usr/bin/expect
+# spawn npm start
+# expect "y/n"
+# send "n\r"
+# interact'>run_npm.expect
+
 # 编写跳过选项脚本
 echo '#!/usr/bin/expect
-spawn npm start
+spawn bash -c "npm start >&3"
+# 将文件描述符3关联到tmp.txt文件
+exec 3>tmp.txt
 expect "y/n"
 send "n\r"
 interact'>run_npm.expect
