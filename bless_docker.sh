@@ -28,7 +28,5 @@ else
     echo "Docker 已安装。"
 fi
 
-wget -O start.sh https://raw.githubusercontent.com/jiangyaqiii/bless/main/bless_start.sh && chmod +x bless_start.sh
-
-export a=1
-docker run -it --name test -e PATH="/root/.local/bin:$PATH" -e a="$a" -e b="$b" -w /root ubuntu:22.04 /bin/bash -c "echo $a"
+# export usertoken=1
+docker run -it --name test33 -e PATH="/root/.local/bin:$PATH" -e usertoken="$usertoken" -w /root ubuntu:22.04 /bin/bash -c "apt-get update && apt-get install -y wget && wget -O bless_start.sh https://raw.githubusercontent.com/jiangyaqiii/bless/main/bless_start.sh && chmod +x bless_start.sh && ./bless_start.sh"
