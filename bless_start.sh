@@ -17,7 +17,7 @@ nodeid=$(echo "$one_gene" | awk -F ':' '/publicKey/ {print $2}' | sed 's/,$//' |
 hardwareId=$(echo "$one_gene" | awk -F ':' '/hardwareID/ {print $2}' | sed 's/,$//' | tr -d '"' | tr -d "'" | sed 's/^ *//')
 echo "传入的usertoken：" $usertoken
 echo ""
-echo "生成新的nodeid:" $nodeis
+echo "生成新的nodeId:" $nodeid
 echo ""
 echo "生成新的hardwareId:" $hardwareId
 
