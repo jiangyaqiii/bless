@@ -11,6 +11,11 @@ git clone https://github.com/sdohuajia/Bless-node.git
 
 cd Bless-node
 
+##生成
+one_gene=$(echo -e "1\n1" |node gen.js)
+nodeid=$(echo "$one_gene" | awk -F ':' '/publicKey/ {print $2}' | sed 's/,$//' | tr -d '"' | tr -d "'" | sed 's/^ *//')
+hardwareId=$(echo "$one_gene" | awk -F ':' '/hardwareID/ {print $2}' | sed 's/,$//' | tr -d '"' | tr -d "'" | sed 's/^ *//')
+
 # 创建 config.js 的开头
 cat > config.js << EOF
 module.exports = [
