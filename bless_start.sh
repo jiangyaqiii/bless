@@ -62,3 +62,8 @@ tmux send-keys -t Bless "cd Bless-node" C-m  # 切换到 Bless node 目录
 tmux send-keys -t Bless "npm install" C-m  # 安装 npm install
 tmux send-keys -t Bless "./run_npm.expect" C-m # 启动 npm start
 echo "已经启动成功"
+
+##保持不退出
+while True; do
+    sleep 3600;
+done
