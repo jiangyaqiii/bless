@@ -58,10 +58,8 @@ echo ''>tmp.txt
 
 # 编写跳过选项脚本
 echo '#!/usr/bin/expect
-# 先创建一个临时文件描述符4，并将其关联到tmp.txt文件
-exec 4>tmp.txt
 # 启动npm start，并通过>&4将其输出重定向到已经关联好的文件描述符4
-spawn bash -c "npm start >&4"
+spawn bash -c "npm start 2>&1 | tee tmp.txt"
 expect "y/n"
 send "n\r"
 interact'>run_npm.expect
