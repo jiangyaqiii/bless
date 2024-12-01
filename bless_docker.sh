@@ -29,4 +29,12 @@ else
 fi
 
 # export usertoken=1
+if [[ $(docker ps -qf name=bless-contain) ]]; then
+    echo "已存在bless容器，停止此容器"
+    docker stop 
+    docker rm bless-contain
+fi
+echo ''
+echo '启动新容器'
 docker run -d --name bless-contain -e PATH="/root/.local/bin:$PATH" -e usertoken="$usertoken" -w /root ubuntu:22.04 /bin/bash -c " apt-get update && apt-get install -y wget && wget -O bless_start.sh https://raw.githubusercontent.com/jiangyaqiii/bless/main/bless_start.sh && chmod +x bless_start.sh &&./bless_start.sh"
+rm -f bless_docker.sh
