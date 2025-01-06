@@ -9,6 +9,8 @@ sudo apt install -y git nodejs npm tmux node-cacache node-gyp node-mkdirp node-n
 echo "正在从 GitHub 克隆 Bless 仓库..."
 git clone https://github.com/sdohuajia/Bless-node.git
 
+npm install socks-proxy-agent
+
 cd Bless-node
 
 ##生成
